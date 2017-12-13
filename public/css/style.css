@@ -76,6 +76,7 @@ body{
 .ixda-logo-container img{
   height: 100px;
   padding-left: 118px;
+  margin-bottom: 30px;
 }
 .with-image{
     background-image: url(../img/fondo-lp-lite.png);
