@@ -1,0 +1,141 @@
+/* http://meyerweb.com/eric/tools/css/reset/
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+body{
+  background: linear-gradient(to right, #001e29 ,#622040, #a74345, #e9a42c);
+  width: 100vh;
+  height: 100vh;
+}
+.roulette-canvas{
+  position: absolute;
+  right: -700px;
+  top: 5%;
+}
+.container{
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-start;
+  background: linear-gradient(to right, #001e29cc ,#622040cc, #a74345cc, #e9a42ccc);
+}
+.isa-redux-logo{
+  height: 200px;
+}
+.ixda-logo-container{
+  display: flex;
+  justify-content: center;
+  width: 484px;
+}
+.ixda-logo-container img{
+  height: 100px;
+  padding-left: 118px;
+}
+.with-image{
+    background-image: url(../img/fondo-lp-lite.png);
+    background-size: 100vw 100vh;
+    background-repeat: no-repeat;
+    background-position: center;
+    overflow: hidden;
+}
+.message-zone{
+  align-self: center;
+  height: 200px;
+  top: 50px;
+  position: absolute;
+}
+.winner-title{
+  font-family: "Gloss And Bloom", Helvetica, Arial, sans-serif;
+  font-size: 3em;
+  color: white;
+}
+#winner-name{
+  font-family: Helvetica, Arial, sans-serif;
+  text-align: center;
+  font-weight: 800;
+  font-size: 3em;
+  margin-top: 25px;
+  color: white;
+}
+.eva-3-btn-ghost{
+  box-sizing: border-box;
+  border-radius: 4px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  transition: background-color .3s ease-out;
+  font-family: helvetica, Arial, sans-serif;
+  display: inline-block;
+  overflow: hidden;
+  outline: none;
+  text-align: center;
+  cursor: pointer;
+  white-space: nowrap;
+  text-decoration: none;
+  border: solid 1px white;
+  color: white;
+  background-color: transparent;
+}
+.eva-3-btn-ghost.btn-text{
+    transition: transform .2s,color .3s,-webkit-transform .2s;
+    font-style: normal;
+    display: block;
+}
+.eva-3-btn-ghost.-lg{
+  font-size: 16px;
+  height: 45px;
+  line-height: 44px;
+  padding: 0 20px;
+  }
+  .floating-on-the-top-left{
+    position: absolute;
+    top: 20px;
+    left: 20px;
+  }

@@ -8,14 +8,17 @@
   <body class="with-image">
 
     <div class="container">
+      <a class="eva-3-btn-ghost -lg floating-on-the-top-left" onclick="spin();"><em class="btn-text">Sortear</em></a>
+      <div class="message-zone">
+        <div class=winner-title>el ganador es...</div>
+        <div id=winner-name></div>
+      </div>
       <img src="img/isa-logo-white.png" class="isa-redux-logo">
       <div class="ixda-logo-container">
         <img src="img/ixda-logo-white_1.png">
       </div>
-      <span id=winner-name><span>
-      <input type="button" value="spin" onclick="spin();" style="float:left;" />
     </div>
-    <canvas id="canvas" class="roulette-canvas" width="800" height="800"></canvas>
+    <canvas id="canvas" class="roulette-canvas" width="1000" height="1000"></canvas>
     <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
     <script type="text/javascript" src="js/rulette.js"></script>
     <script type="text/javascript" src="js/papaparse.min.js"></script>
