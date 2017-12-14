@@ -154,7 +154,7 @@ function spin() {
   roulette_container.classList.remove("-hide");
   spinAngleStart = Math.random() * 10 + 10;
   spinTime = 0;
-  spinTimeTotal = Math.random() * 5 + 4 * 1000;
+  spinTimeTotal = Math.random() * 5 + 4 * 3000;
   rotateWheel();
 }
 
