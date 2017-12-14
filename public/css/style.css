@@ -46,27 +46,31 @@ table {
 	border-collapse: collapse;
 	border-spacing: 0;
 }
+
+/*Reset end here*/
+
 body{
-  background: linear-gradient(to right, #001e29 ,#622040, #a74345, #e9a42c);
+
   width: 100vh;
   height: 100vh;
 }
 .roulette-canvas{
-  position: absolute;
-  right: -700px;
-  top: 5%;
+  margin-left: -500px;
 }
 .container{
   width: 100vw;
   height: 100vh;
-  display: flex;
+	box-sizing: border-box;
+	display: flex;
+	padding: 40px 0;
   flex-direction: column;
-  justify-content: flex-end;
-  align-items: flex-start;
-  background: linear-gradient(to right, #001e29cc ,#622040cc, #a74345cc, #e9a42ccc);
+  justify-content: space-between;
+  align-items: center;
+  /*ISA17 gradient
+	background: linear-gradient(to right, #001e29cc ,#622040cc, #a74345cc, #e9a42ccc);*/
 }
 .isa-redux-logo{
-  height: 200px;
+  height: 150px;
 }
 .ixda-logo-container{
   display: flex;
@@ -75,21 +79,25 @@ body{
 }
 .ixda-logo-container img{
   height: 100px;
-  padding-left: 118px;
+  padding-left: 80px;
   margin-bottom: 30px;
 }
 .with-image{
-    background-image: url(../img/fondo-lp-lite.png);
+    background-image: url(../img/fondo_sorteo_final.png);
     background-size: 100vw 100vh;
     background-repeat: no-repeat;
     background-position: center;
     overflow: hidden;
 }
 .message-zone{
-  align-self: center;
-  height: 200px;
-  top: 50px;
-  position: absolute;
+	transition: opacity 0.2s 0.3s ease-in;
+	height: 200px;
+	top: 40%;
+	position: absolute;
+	opacity: 0;
+}
+.message-zone.-show{
+	opacity: 1;
 }
 .winner-title{
   font-family: "Gloss And Bloom", Helvetica, Arial, sans-serif;
@@ -100,16 +108,13 @@ body{
   font-family: Helvetica, Arial, sans-serif;
   text-align: center;
   font-weight: 800;
-  font-size: 3em;
+  font-size: 4em;
   margin-top: 25px;
   color: white;
 }
 .eva-3-btn-ghost{
   box-sizing: border-box;
   border-radius: 4px;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
   user-select: none;
   transition: background-color .3s ease-out;
   font-family: helvetica, Arial, sans-serif;
@@ -135,8 +140,41 @@ body{
   line-height: 44px;
   padding: 0 20px;
   }
-  .floating-on-the-top-left{
-    position: absolute;
-    top: 20px;
-    left: 20px;
-  }
+.eva-3-btn-ghost:hover{
+	transition-duration: 0s;
+	background-color: white;
+	text-decoration: none;
+	color: black;
+}
+.eva-3-btn-ghost[disabled]{
+	border: none;
+	pointer-events: none;
+	background-color: transparent !important;
+
+}
+.eva-3-btn-ghost[disabled].btn-text{
+	color: white !important;
+}
+.floating-on-the-right{
+  position: absolute;
+  top: 30%;
+  right: 20px;
+}
+.canvas-and-arrow-container{
+	position: absolute;
+	top: 0;
+	left: 0;
+	display: inline-flex;
+	opacity: 1;transition: opacity .3s .3s linear;
+}
+.canvas-and-arrow-container.-hide{
+	opacity: 0;
+}
+
+.flecha{
+	transform: rotateX(180deg) rotate(270deg);
+	height: 100px;
+	align-self: center;
+	margin-left: -180px;
+	margin-top: -250px;
+}

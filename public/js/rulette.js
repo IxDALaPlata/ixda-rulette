@@ -7,6 +7,11 @@ $(document).ready(function() {
         error:function(data) {console.log("error",data);},
      });
 });
+var roulette_container = document.getElementsByClassName("canvas-and-arrow-container")[0];
+var winner_name = document.getElementById("winner-name");
+var message_zone = document.getElementsByClassName("message-zone")[0];
+var spin_button = document.getElementsByClassName("floating-on-the-right")[0];
+
 
 var options = [];
 var arc;
@@ -83,7 +88,7 @@ function drawRouletteWheel() {
     ctx = canvas.getContext("2d");
     // ctx.translate(100,100);
     ctx.clearRect(0,0,1200,1200);
-
+    // ctx.rotate(180 * Math.PI / 180);
     ctx.strokeStyle = "transparent";
     ctx.lineWidth = 0;
 
@@ -95,8 +100,8 @@ function drawRouletteWheel() {
       ctx.fillStyle = "rgba(255, 255, 255, 0)"; //getColor(i, options.length);
 
       ctx.beginPath();
-      ctx.arc(600, 600, outsideRadius, angle, angle + arc, false);
-      ctx.arc(600, 600, insideRadius, angle + arc, angle, true);
+      ctx.arc(300, 350, outsideRadius, angle, angle + arc, false);
+      ctx.arc(300, 350, insideRadius, angle + arc, angle, true);
       ctx.stroke();
       ctx.fill();
 
@@ -105,11 +110,19 @@ function drawRouletteWheel() {
       ctx.shadowOffsetY = -1;
       ctx.shadowBlur    = 0;
       //ctx.shadowColor   = "rgb(220,220,220)";
+      /*
+      Show the different textAlign values
+        ctx.textAlign = "start";
+        ctx.textAlign = "end";
+        ctx.textAlign = "left";
+        ctx.textAlign = "center";
+        ctx.textAlign = "right";
+      */
+      ctx.textAlign = "center";
       ctx.fillStyle = "white";
-      ctx.translate(350 + Math.cos(angle + arc / 2) * textRadius,
-                    350 + Math.sin(angle + arc / 2) * textRadius);
+      ctx.translate(300 + Math.cos(angle + arc / 2) * outsideRadius,
+                    350 + Math.sin(angle + arc / 2) * outsideRadius);
       ctx.rotate(angle + arc / 2 + Math.PI * 2);
-      ctx.rotate(180 * Math.PI / 180);
       var text = options[i];
       ctx.fillText(text, -ctx.measureText(text).width / 2, 0);
       ctx.restore();
@@ -135,6 +148,10 @@ function drawRouletteWheel() {
 }
 
 function spin() {
+  spin_button.setAttribute("disabled","disabled");
+  spin_button.innerText= "Girando...";
+  message_zone.classList.remove("-show");
+  roulette_container.classList.remove("-hide");
   spinAngleStart = Math.random() * 10 + 10;
   spinTime = 0;
   spinTimeTotal = Math.random() * 5 + 4 * 1000;
@@ -155,19 +172,19 @@ function rotateWheel() {
 
 function stopRotateWheel() {
   clearTimeout(spinTimeout);
-  var degrees = startAngle * 180 / Math.PI + 180;
+  var degrees = startAngle * 180 / Math.PI + 0;
   var arcd = arc * 180 / Math.PI;
   var index = Math.floor((360 - degrees % 360) / arcd);
   ctx.save();
   ctx.font = 'bold 30px Helvetica, Arial';
   var text = options[index]
-  document.getElementById("winner-name").innerText = text;
-  // ctx.fillText(text, 350 - ctx.measureText(text).width / 2, 350 + 10);
-  // ctx.fillText(text, 600 , 350);
-  console.log(options);
+  winner_name.innerText = text;
+
+  message_zone.className += " -show";
+  roulette_container.className+=" -hide"
   options.splice(index, 1);
-  console.log(options);
-  drawRouletteWheel();
+  spin_button.innerText= "Sortear";
+  spin_button.removeAttribute("disabled");
   ctx.restore();
 }
 
