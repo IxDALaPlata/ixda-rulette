@@ -34,7 +34,7 @@ function parseCSV(data){
     var oldArray = results.data;
 
     for (var i = 1; i < oldArray.length -1; i++) {
-      options.push((oldArray[i][2] + " " + oldArray[i][3]).toString());
+      options.push((oldArray[i][2] + " " + oldArray[i][3]+ "  ")).toString();
     }
   }
   arc = Math.PI / (options.length / 2);
@@ -89,8 +89,8 @@ function drawRouletteWheel() {
     // ctx.translate(100,100);
     ctx.clearRect(0,0,1200,1200);
     // ctx.rotate(180 * Math.PI / 180);
-    ctx.strokeStyle = "transparent";
-    ctx.lineWidth = 0;
+    ctx.strokeStyle = "#ffffff80";
+    ctx.lineWidth = 1;
 
     ctx.font = 'bold 20px Helvetica, Arial';
 
@@ -124,7 +124,7 @@ function drawRouletteWheel() {
                     350 + Math.sin(angle + arc / 2) * outsideRadius);
       ctx.rotate(angle + arc / 2 + Math.PI * 2);
       var text = options[i];
-      ctx.fillText(text, -ctx.measureText(text).width / 2, 0);
+      ctx.fillText(text, -ctx.measureText(text).width / 2, 6);
       ctx.restore();
     }
 
@@ -154,12 +154,12 @@ function spin() {
   roulette_container.classList.remove("-hide");
   spinAngleStart = Math.random() * 10 + 10;
   spinTime = 0;
-  spinTimeTotal = Math.random() * 5 + 4 * 3000;
+  spinTimeTotal = Math.random() * 5 + 4 * 5000;
   rotateWheel();
 }
 
 function rotateWheel() {
-  spinTime += 50;
+  spinTime += 100;
   if(spinTime >= spinTimeTotal) {
     stopRotateWheel();
     return;
@@ -167,7 +167,7 @@ function rotateWheel() {
   var spinAngle = spinAngleStart - easeOut(spinTime, 0, spinAngleStart, spinTimeTotal);
   startAngle += (spinAngle * Math.PI / 180);
   drawRouletteWheel();
-  spinTimeout = setTimeout('rotateWheel()', 50);
+  spinTimeout = setTimeout('rotateWheel()', 30);
 }
 
 function stopRotateWheel() {

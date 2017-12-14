@@ -173,8 +173,14 @@ body{
 
 .flecha{
 	transform: rotateX(180deg) rotate(270deg);
-	height: 100px;
+	height: 50px;
 	align-self: center;
 	margin-left: -180px;
-	margin-top: -250px;
+	margin-top: -280px;
+	animation: mymove 1s infinite;
+}
+@keyframes mymove {
+    0% {margin-left: -180px;}
+    50% {margin-left: -190px;}
+		100% {margin-left: -180px;}
 }
