@@ -70,7 +70,7 @@ body{
 	background: linear-gradient(to right, #001e29cc ,#622040cc, #a74345cc, #e9a42ccc);*/
 }
 .isa-redux-logo{
-  height: 150px;
+  height: 8em;
 }
 .ixda-logo-container{
   display: flex;
@@ -78,9 +78,9 @@ body{
   width: 484px;
 }
 .ixda-logo-container img{
-  height: 100px;
-  padding-left: 80px;
-  margin-bottom: 30px;
+	height: 5em;
+	padding-left: 4em;
+	margin-bottom: 30px;
 }
 .with-image{
     background-image: url(../img/fondo_sorteo_final.png);
@@ -98,6 +98,16 @@ body{
 }
 .message-zone.-show{
 	opacity: 1;
+}
+.roulette-name{
+	opacity: 1;
+	font-family: Helvetica, Arial, sans-serif;
+  text-align: center;
+	color:#ffffff80;
+	font-size: 2em;
+}
+.roulette-name.-hide{
+	opacity: 0;
 }
 .winner-title{
   font-family: "Gloss And Bloom", Helvetica, Arial, sans-serif;
@@ -140,7 +150,7 @@ body{
   line-height: 44px;
   padding: 0 20px;
   }
-.eva-3-btn-ghost:hover{
+.eva-3-btn-ghost:hover,.eva-3-btn-ghost:focus{
 	transition-duration: 0s;
 	background-color: white;
 	text-decoration: none;
@@ -176,11 +186,30 @@ body{
 	height: 50px;
 	align-self: center;
 	margin-left: -180px;
-	margin-top: -280px;
+	margin-top: -18.2em;;
 	animation: mymove 1s infinite;
 }
 @keyframes mymove {
     0% {margin-left: -180px;}
     50% {margin-left: -190px;}
 		100% {margin-left: -180px;}
+}
+@media (max-width: 900px) {
+
+		.isa-redux-logo{
+		  height: 6em;
+		}
+
+		.ixda-logo-container img{
+		  height: 3em;
+		  margin-bottom: 30px;
+		}
+		.roulette-name{
+			font-size: 1em;
+		}
+}
+@media (min-width: 1200px), (aspect-ratio: 16/9), (aspect-ratio: 16/10) {
+	.with-image{
+	    background-image: url(../img/fondo_sorteo_final_large.png);
+		}
 }

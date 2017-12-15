@@ -1,16 +1,32 @@
-$(document).ready(function() {
-    $.ajax({
-        type: "GET",
-        url: "../csv/report.csv",
-        dataType: "text",
-        success: function(data) {parseCSV(data);},
-        error:function(data) {console.log("error",data);},
-     });
-});
+// $(document).ready(function() {
+//     $.ajax({
+//         type: "GET",
+//         url: "../csv/report.csv",
+//         dataType: "text",
+//         success: function(data) {parseCSV(data);},
+//         error:function(data) {console.log("error",data);},
+//      });
+// });
+var request = new XMLHttpRequest();
+request.open('GET', '../csv/report.csv', true);
+
+request.onload = function() {
+  if (request.status >= 200 && request.status < 400) {
+    // Success!
+    var data = request.responseText;
+    parseCSV(data);
+  } else {
+    var data = JSON.parse(request.responseText);
+    console.log("error",data);
+    }
+};
+request.send();
+
 var roulette_container = document.getElementsByClassName("canvas-and-arrow-container")[0];
 var winner_name = document.getElementById("winner-name");
 var message_zone = document.getElementsByClassName("message-zone")[0];
 var spin_button = document.getElementsByClassName("floating-on-the-right")[0];
+var roulette_name = document.getElementsByClassName("roulette-name")[0];
 
 
 var options = [];
@@ -132,15 +148,16 @@ function drawRouletteWheel() {
     ctx.save();
     ctx.fillStyle = "white";
     ctx.beginPath();
+    var variable = 310;
     //Esto dibuja la flechita magicamente
-    ctx.moveTo(outsideRadius - 0 - (outsideRadius + 5), 350 - 4);
-    ctx.lineTo(outsideRadius - 0 -(outsideRadius + 5), 350 + 4);
-    ctx.lineTo(outsideRadius - 0 -(outsideRadius - 5), 350 + 4);
-    ctx.lineTo(outsideRadius - 0 -(outsideRadius - 5), 350 + 9);
-    ctx.lineTo(outsideRadius - 0 -(outsideRadius - 13),350 + 0);
-    ctx.lineTo(outsideRadius - 0 -(outsideRadius - 5), 350 - 9);
-    ctx.lineTo(outsideRadius - 0 -(outsideRadius - 5), 350 - 4);
-    ctx.lineTo(outsideRadius - 0 -(outsideRadius + 5), 350 - 4);
+    ctx.moveTo((outsideRadius + 5)+variable, 350 - 4);
+    ctx.lineTo((outsideRadius + 5)+variable, 350 + 4);
+    ctx.lineTo((outsideRadius - 5)+variable, 350 + 4);
+    ctx.lineTo((outsideRadius - 5)+variable, 350 + 9);
+    ctx.lineTo((outsideRadius - 13)+variable,350 + 0);
+    ctx.lineTo((outsideRadius - 5)+variable, 350 - 9);
+    ctx.lineTo((outsideRadius - 5)+variable, 350 - 4);
+    ctx.lineTo((outsideRadius + 5)+variable, 350 - 4);
     ctx.fill();
 
 
@@ -151,6 +168,7 @@ function spin() {
   spin_button.setAttribute("disabled","disabled");
   spin_button.innerText= "Girando...";
   message_zone.classList.remove("-show");
+  roulette_name.classList.remove("-hide");
   roulette_container.classList.remove("-hide");
   spinAngleStart = Math.random() * 10 + 10;
   spinTime = 0;
@@ -159,15 +177,20 @@ function spin() {
 }
 
 function rotateWheel() {
-  spinTime += 100;
+  spinTime += 50;
   if(spinTime >= spinTimeTotal) {
     stopRotateWheel();
     return;
   }
   var spinAngle = spinAngleStart - easeOut(spinTime, 0, spinAngleStart, spinTimeTotal);
   startAngle += (spinAngle * Math.PI / 180);
+  var degrees = startAngle * 180 / Math.PI + 0;
+  var arcd = arc * 180 / Math.PI;
+  var index = Math.floor((360 - degrees % 360) / arcd);
+  var text = options[index]
+  roulette_name.innerText = text;
   drawRouletteWheel();
-  spinTimeout = setTimeout('rotateWheel()', 30);
+  spinTimeout = setTimeout('rotateWheel()', 50);
 }
 
 function stopRotateWheel() {
@@ -176,11 +199,10 @@ function stopRotateWheel() {
   var arcd = arc * 180 / Math.PI;
   var index = Math.floor((360 - degrees % 360) / arcd);
   ctx.save();
-  ctx.font = 'bold 30px Helvetica, Arial';
   var text = options[index]
   winner_name.innerText = text;
-
   message_zone.className += " -show";
+  roulette_name.classList.add("-hide");
   roulette_container.className+=" -hide"
   options.splice(index, 1);
   spin_button.innerText= "Sortear";

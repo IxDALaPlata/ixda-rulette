@@ -9,10 +9,13 @@
   <body class="with-image">
 
     <div class="container">
-      <a class="eva-3-btn-ghost -lg floating-on-the-right" onclick="spin();"><em class="btn-text">Sortear</em></a>
+      <button class="eva-3-btn-ghost -lg floating-on-the-right" onclick="spin();"><em class="btn-text">Sortear</em></button>
       <div class="message-zone">
         <div class=winner-title> La persona ganadora es ...</div>
         <div id=winner-name></div>
+      </div>
+      <div class="message-zone -show">
+        <span class="roulette-name"></span>
       </div>
       <img src="img/isa-logo-white.png" class="isa-redux-logo">
       <div class="ixda-logo-container">
@@ -22,8 +25,9 @@
     <div class="canvas-and-arrow-container">
       <canvas id="canvas" class="roulette-canvas" width="1000" height="1000"></canvas>
       <img src="img/cursor.png" alt="cursor" class="flecha">
+
     </div>
-    <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+    <!-- <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script> -->
     <script type="text/javascript" src="js/rulette.js"></script>
     <script type="text/javascript" src="js/papaparse.min.js"></script>
   </body>
