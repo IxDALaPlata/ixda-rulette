@@ -1,12 +1,4 @@
-// $(document).ready(function() {
-//     $.ajax({
-//         type: "GET",
-//         url: "../csv/report.csv",
-//         dataType: "text",
-//         success: function(data) {parseCSV(data);},
-//         error:function(data) {console.log("error",data);},
-//      });
-// });
+
 var request = new XMLHttpRequest();
 request.open('GET', '../csv/report.csv', true);
 
@@ -57,8 +49,6 @@ function parseCSV(data){
   drawRouletteWheel();
 }
 
-// var options = ["Marcos Molineri", "Patricia Harkes", "Yesica Orellana", "Agustina Lanari", "Agustina Lopez", "Rosana Inchaurrondo", "Alexia Navarrete", "Cecilia Datko", "Raul Moviglia", "Andrea Cruz", "Melisa Mainero", "Sofia Guerrini", "INDIRA VEGA", "Sofia Aloise", "Catalina Carlos", "Julieta Gobbi", "Thalía Hurtado", "juan alvarez lojo", "Victoria Villalobos Sambucaro", "Julian Mosquera", "Lucas Alonso", "Teresita Bulfon", "María José Calderaro", "Anahi Castellano", "Eric Collard Bovy", "Matias Ferreyra", "Mariana Galeano", "Gonzalo Luna", "Diego Corrao", "Paola Giannattasio", "Marina Leon", "Magali Ortiz Miller", "Agustina Pared", "Paula Pejkovic", "Javier Peña", "Juan Martin Pietraroia", "Daniel Rozadilla", "Julia Saborido", "Sofia Spoltore", "Catalina Velarde", "Andres Vicente", "Juliana Vitale", "Catalina Guerrero", "Ismael Martinez", "Pablo Hernán Amarilla"];
-
 var startAngle = 0;
 var spinTimeout = null;
 
@@ -67,8 +57,6 @@ var spinTime = 0;
 var spinTimeTotal = 0;
 
 var ctx;
-
-// document.getElementById("spin").addEventListener("click", spin);
 
 function byte2Hex(n) {
   var nybHexString = "0123456789ABCDEF";

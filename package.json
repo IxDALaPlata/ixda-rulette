@@ -1,5 +1,5 @@
 {
-  "name": "isa-roullete",
+  "name": "redux-roullete",
   "version": "0.0.1",
   "main": "server.js",
   "dependencies": {
@@ -7,5 +7,26 @@
   },
   "scripts": {
     "start": "node server.js"
-  }
+  },
+  "description": "This small and of dubious quality application was created to make draws in the ISA17 Redux in La Plata by the IxdaLaPlata team.",
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/IxDALaPlata/redux-rulette.git"
+  },
+  "keywords": [
+    "redux",
+    "ixdaLaPlata",
+    "ixda",
+    "isa",
+    "rulette",
+    "sorteo",
+    "draw"
+  ],
+  "author": "estebanjcoria@gmail.com",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/IxDALaPlata/redux-rulette/issues"
+  },
+  "homepage": "https://github.com/IxDALaPlata/redux-rulette#readme"
 }
