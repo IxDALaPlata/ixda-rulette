@@ -24,7 +24,7 @@
     "draw"
   ],
   "author": "estebanjcoria@gmail.com",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/IxDALaPlata/redux-rulette/issues"
   },
