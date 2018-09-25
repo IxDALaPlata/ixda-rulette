@@ -83,8 +83,9 @@ body{
 	margin-bottom: 30px;
 }
 .with-image{
-    background-image: url(../img/fondo_sorteo_final.png);
-    background-size: 100vw 100vh;
+		background-image: url(../img/fondo_sorteo_final.jpg);
+		background-color: #0d1636;
+    background-size: 100%;
     background-repeat: no-repeat;
     background-position: center;
     overflow: hidden;
@@ -149,7 +150,13 @@ body{
   height: 45px;
   line-height: 44px;
   padding: 0 20px;
-  }
+	}
+	.eva-3-btn-ghost.-md{
+		font-size: 14px;
+		height: 35px;
+		line-height: 35px;
+		padding: 0 10px;
+		}
 .eva-3-btn-ghost:hover,.eva-3-btn-ghost:focus{
 	transition-duration: 0s;
 	background-color: white;
@@ -170,6 +177,15 @@ body{
   top: 30%;
   right: 20px;
 }
+.floating-on-center-bottom{
+	display: flex;
+	flex-direction: column;
+	height: 100px;
+	justify-content: space-between;
+  position: absolute;
+  bottom: 5%;
+  right: calc(50% - 20px);
+}
 .canvas-and-arrow-container{
 	position: absolute;
 	top: 0;
@@ -180,6 +196,21 @@ body{
 .canvas-and-arrow-container.-hide{
 	opacity: 0;
 }
+.confeti {
+	visibility: hidden;
+	transition: visibility 2s ease;
+	position: absolute;
+	top: 0;
+	left: 0;
+  overflow-y: hidden;
+  overflow-x: hidden;
+  width: 100%;
+  margin: 0;
+}
+.confeti.-show{
+	visibility: visible;
+}
+
 
 .flecha{
 	transform: rotateX(180deg) rotate(270deg);
@@ -210,6 +241,6 @@ body{
 }
 @media (min-width: 1200px), (aspect-ratio: 16/9), (aspect-ratio: 16/10) {
 	.with-image{
-	    background-image: url(../img/fondo_sorteo_final_large.png);
+	    background-image: url(../img/fondo_sorteo_final_large.jpg);
 		}
 }

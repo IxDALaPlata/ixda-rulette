@@ -7,9 +7,9 @@
     <meta name="viewport" content="width=device-width, user-scalable=no">
   </head>
   <body class="with-image">
-
+  
     <div class="container">
-      <button class="eva-3-btn-ghost -lg floating-on-the-right" onclick="spin();"><em class="btn-text">Sortear</em></button>
+      
       <div class="message-zone">
         <div class=winner-title> La persona ganadora es ...</div>
         <div id=winner-name></div>
@@ -17,17 +17,39 @@
       <div class="message-zone -show">
         <span class="roulette-name"></span>
       </div>
-      <img src="img/isa-logo-white.png" class="isa-redux-logo">
-      <div class="ixda-logo-container">
-        <img src="img/ixda-logo-white_1.png">
-      </div>
     </div>
     <div class="canvas-and-arrow-container">
       <canvas id="canvas" class="roulette-canvas" width="1000" height="1000"></canvas>
-      <img src="img/cursor.png" alt="cursor" class="flecha">
+      
 
+    </div>
+    <canvas class="confeti">
+
+    </canvas>
+    <div class='floating-on-center-bottom'>
+      <button class="eva-3-btn-ghost -lg  spin-button" onclick="spin();"><em class="btn-text">Sortear</em></button>
+      <button class="eva-3-btn-ghost -md" onclick="openFullscreen();"><em class="btn-text">Full screen</em></button>
     </div>
     <script type="text/javascript" src="js/rulette.js"></script>
     <script type="text/javascript" src="js/papaparse.min.js"></script>
+    <script type="text/javascript" src="js/confeti.js"></script>
+    <script>
+      /* Get the element you want displayed in fullscreen mode (a video in this example): */
+      var elem = document.getElementsByTagName("html")[0]; 
+      
+      /* When the openFullscreen() function is executed, open the video in fullscreen.
+      Note that we must include prefixes for different browsers, as they don't support the requestFullscreen method yet */
+      function openFullscreen() {
+        if (elem.requestFullscreen) {
+          elem.requestFullscreen();
+        } else if (elem.mozRequestFullScreen) { /* Firefox */
+          elem.mozRequestFullScreen();
+        } else if (elem.webkitRequestFullscreen) { /* Chrome, Safari and Opera */
+          elem.webkitRequestFullscreen();
+        } else if (elem.msRequestFullscreen) { /* IE/Edge */
+          elem.msRequestFullscreen();
+        }
+      }
+      </script>
   </body>
 </html>

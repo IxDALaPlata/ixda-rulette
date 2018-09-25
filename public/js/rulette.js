@@ -6,7 +6,7 @@ request.onload = function() {
   if (request.status >= 200 && request.status < 400) {
     // Success!
     var data = request.responseText;
-    parseCSV(data);
+    parseCSV(data,drawRouletteWheel);
   } else {
     var data = JSON.parse(request.responseText);
     console.log("error",data);
@@ -17,14 +17,15 @@ request.send();
 var roulette_container = document.getElementsByClassName("canvas-and-arrow-container")[0];
 var winner_name = document.getElementById("winner-name");
 var message_zone = document.getElementsByClassName("message-zone")[0];
-var spin_button = document.getElementsByClassName("floating-on-the-right")[0];
+var spin_button = document.getElementsByClassName("spin-button")[0];
 var roulette_name = document.getElementsByClassName("roulette-name")[0];
+var confeti_canvas = document.querySelector(".confeti");
 
 
 var options = [];
 var arc;
 
-function parseCSV(data){
+function parseCSV(data,callback){
 
   var config = {
     delimiter:"",
@@ -46,7 +47,7 @@ function parseCSV(data){
     }
   }
   arc = Math.PI / (options.length / 2);
-  drawRouletteWheel();
+  callback();
 }
 
 var startAngle = 0;
@@ -58,33 +59,10 @@ var spinTimeTotal = 0;
 
 var ctx;
 
-function byte2Hex(n) {
-  var nybHexString = "0123456789ABCDEF";
-  return String(nybHexString.substr((n >> 4) & 0x0F,1)) + nybHexString.substr(n & 0x0F,1);
-}
-
-function RGB2Color(r,g,b) {
-	return '#' + byte2Hex(r) + byte2Hex(g) + byte2Hex(b);
-}
-
-function getColor(item, maxitem) {
-  var phase = 0;
-  var center = 128;
-  var width = 127;
-  var frequency = Math.PI*2/maxitem;
-
-  red   = Math.sin(frequency*item+2+phase) * width + center;
-  green = Math.sin(frequency*item+0+phase) * width + center;
-  blue  = Math.sin(frequency*item+4+phase) * width + center;
-
-  return RGB2Color(red,green,blue);
-}
-
 function drawRouletteWheel() {
   var canvas = document.getElementById("canvas");
   if (canvas.getContext) {
-    var outsideRadius = 500;
-    var textRadius = 250;
+    var outsideRadius = 600;
     var insideRadius = 50;
     //recalcular arc
     arc = Math.PI / (options.length / 2);
@@ -93,15 +71,14 @@ function drawRouletteWheel() {
     // ctx.translate(100,100);
     ctx.clearRect(0,0,1200,1200);
     // ctx.rotate(180 * Math.PI / 180);
-    ctx.strokeStyle = "#ffffff80";
+    ctx.strokeStyle = "#f5535e";
     ctx.lineWidth = 1;
 
-    ctx.font = 'bold 20px Helvetica, Arial';
+    ctx.font = '16px Helvetica, Arial';
 
     for(var i = 0; i < options.length; i++) {
       var angle = startAngle + i * arc;
-      //ctx.fillStyle = colors[i];
-      ctx.fillStyle = "rgba(255, 255, 255, 0)"; //getColor(i, options.length);
+      ctx.fillStyle = "rgba(255, 255, 255, 0)"; 
 
       ctx.beginPath();
       ctx.arc(300, 350, outsideRadius, angle, angle + arc, false);
@@ -113,7 +90,6 @@ function drawRouletteWheel() {
       ctx.shadowOffsetX = -1;
       ctx.shadowOffsetY = -1;
       ctx.shadowBlur    = 0;
-      //ctx.shadowColor   = "rgb(220,220,220)";
       /*
       Show the different textAlign values
         ctx.textAlign = "start";
@@ -158,6 +134,7 @@ function spin() {
   message_zone.classList.remove("-show");
   roulette_name.classList.remove("-hide");
   roulette_container.classList.remove("-hide");
+  confeti_canvas.classList.remove("-show");
   spinAngleStart = Math.random() * 10 + 10;
   spinTime = 0;
   spinTimeTotal = Math.random() * 5 + 4 * 5000;
@@ -191,7 +168,8 @@ function stopRotateWheel() {
   winner_name.innerText = text;
   message_zone.className += " -show";
   roulette_name.classList.add("-hide");
-  roulette_container.className+=" -hide"
+  roulette_container.classList.add("-hide");
+  confeti_canvas.classList.add("-show");
   options.splice(index, 1);
   spin_button.innerText= "Sortear";
   spin_button.removeAttribute("disabled");
@@ -203,4 +181,3 @@ function easeOut(t, b, c, d) {
   var tc = ts*t;
   return b+c*(tc + -3*ts + 3*t);
 }
-//drawRouletteWheel();
