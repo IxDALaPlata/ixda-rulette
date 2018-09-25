@@ -1,4 +1,4 @@
-# Redux La Plata ISA17 Floripa Roullete
+# IxDA La Plata Roullete - Multiuse
 
 This small and of dubious quality application was created to make draws in the ISA17 Redux in La Plata by the IxdaLaPlata team.
 
