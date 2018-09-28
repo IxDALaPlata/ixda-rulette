@@ -107,12 +107,14 @@ body{
 	color:#ffffff80;
 	font-size: 2em;
 }
-.roulette-name.-hide{
-	opacity: 0;
-}
 .winner-title{
-  font-family: "Gloss And Bloom", Helvetica, Arial, sans-serif;
+  font-family:  Helvetica, Arial, sans-serif;
   font-size: 3em;
+	color: white;
+}
+.participants-title{
+  font-family:  Helvetica, Arial, sans-serif;
+  font-size: 1.2rem;
   color: white;
 }
 #winner-name{
@@ -150,13 +152,13 @@ body{
   height: 45px;
   line-height: 44px;
   padding: 0 20px;
-	}
-	.eva-3-btn-ghost.-md{
-		font-size: 14px;
-		height: 35px;
-		line-height: 35px;
-		padding: 0 10px;
-		}
+}
+.eva-3-btn-ghost.-md{
+	font-size: 14px;
+	height: 35px;
+	line-height: 35px;
+	padding: 0 10px;
+}
 .eva-3-btn-ghost:hover,.eva-3-btn-ghost:focus{
 	transition-duration: 0s;
 	background-color: white;
@@ -172,6 +174,13 @@ body{
 .eva-3-btn-ghost[disabled].btn-text{
 	color: white !important;
 }
+.eva-3-btn-ghost.-ixdd:hover,.eva-3-btn-ghost.-ixdd:focus{
+	background-color: #fd6363;
+	border-color: #fd6363;
+	color: white;
+}
+
+
 .floating-on-the-right{
   position: absolute;
   top: 30%;
@@ -182,9 +191,22 @@ body{
 	flex-direction: column;
 	height: 100px;
 	justify-content: space-between;
-  position: absolute;
-  bottom: 5%;
-  right: calc(50% - 20px);
+	align-items: center;
+	position: absolute;
+	bottom: 5%;
+	left: 0;
+	width: 100%;
+}
+.floating-on-center-top{
+	display: flex;
+	flex-direction: column;
+	height: 100px;
+	justify-content: space-between;
+	align-items: center;
+	position: absolute;
+	top: 5%;
+	left: 0;
+	width: 100%;
 }
 .canvas-and-arrow-container{
 	position: absolute;
@@ -193,12 +215,10 @@ body{
 	display: inline-flex;
 	opacity: 1;transition: opacity .3s .3s linear;
 }
-.canvas-and-arrow-container.-hide{
-	opacity: 0;
-}
 .confeti {
 	visibility: hidden;
-	transition: visibility 2s ease;
+	opacity: 0;
+	transition: opacity .5s ease;
 	position: absolute;
 	top: 0;
 	left: 0;
@@ -209,6 +229,7 @@ body{
 }
 .confeti.-show{
 	visibility: visible;
+	opacity: 1;
 }
 
 
@@ -219,6 +240,9 @@ body{
 	margin-left: -180px;
 	margin-top: -18.2em;;
 	animation: mymove 1s infinite;
+}
+.-hide{
+	opacity: 0;
 }
 @keyframes mymove {
     0% {margin-left: -180px;}

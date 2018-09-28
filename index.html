@@ -2,16 +2,20 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>ISA REDUX17 Roulette</title>
+    <title>IXDD Roulette</title>
     <link rel="stylesheet" href="/css/style.css">
     <meta name="viewport" content="width=device-width, user-scalable=no">
+    <link rel="shortcut icon" href="/img/favicon.ico">
   </head>
   <body class="with-image">
   
     <div class="container">
+        <div class='floating-on-center-top'>
+            <div class="participants-title">Participantes: <span id="participants_number"></span></div>
+        </div>
       
       <div class="message-zone">
-        <div class=winner-title> La persona ganadora es ...</div>
+        <div class="winner-title"> La persona ganadora es ...</div>
         <div id=winner-name></div>
       </div>
       <div class="message-zone -show">
@@ -27,8 +31,8 @@
 
     </canvas>
     <div class='floating-on-center-bottom'>
-      <button class="eva-3-btn-ghost -lg  spin-button" onclick="spin();"><em class="btn-text">Sortear</em></button>
-      <button class="eva-3-btn-ghost -md" onclick="openFullscreen();"><em class="btn-text">Full screen</em></button>
+      <button class="eva-3-btn-ghost -lg  spin-button -ixdd" onclick="spin();"><em class="btn-text">Sortear</em></button>
+      <button class="eva-3-btn-ghost -md" onclick="openFullscreen(this);"><em class="btn-text">Pantalla completa</em></button>
     </div>
     <script type="text/javascript" src="js/rulette.js"></script>
     <script type="text/javascript" src="js/papaparse.min.js"></script>
@@ -39,7 +43,7 @@
       
       /* When the openFullscreen() function is executed, open the video in fullscreen.
       Note that we must include prefixes for different browsers, as they don't support the requestFullscreen method yet */
-      function openFullscreen() {
+      function openFullscreen(btn) {
         if (elem.requestFullscreen) {
           elem.requestFullscreen();
         } else if (elem.mozRequestFullScreen) { /* Firefox */
@@ -49,6 +53,7 @@
         } else if (elem.msRequestFullscreen) { /* IE/Edge */
           elem.msRequestFullscreen();
         }
+        btn.classList.add('-hide');
       }
       </script>
   </body>

@@ -20,6 +20,8 @@ var message_zone = document.getElementsByClassName("message-zone")[0];
 var spin_button = document.getElementsByClassName("spin-button")[0];
 var roulette_name = document.getElementsByClassName("roulette-name")[0];
 var confeti_canvas = document.querySelector(".confeti");
+var participants_number = document.querySelector("#participants_number");
+var participants_title = document.querySelector(".participants-title");
 
 
 var options = [];
@@ -62,7 +64,13 @@ var ctx;
 function drawRouletteWheel() {
   var canvas = document.getElementById("canvas");
   if (canvas.getContext) {
-    var outsideRadius = 600;
+    var outsideRadius;
+    if(window.innerWidth/window.innerHeight==1.3333333333333333){
+      outsideRadius = window.innerWidth/2;
+    }else{
+      outsideRadius = window.innerWidth/3 + 100;
+    }
+    
     var insideRadius = 50;
     //recalcular arc
     arc = Math.PI / (options.length / 2);
@@ -123,7 +131,7 @@ function drawRouletteWheel() {
     ctx.lineTo((outsideRadius - 5)+variable, 350 - 4);
     ctx.lineTo((outsideRadius + 5)+variable, 350 - 4);
     ctx.fill();
-
+    participants_number.innerHTML = options.length;
 
   }
 }
@@ -135,6 +143,7 @@ function spin() {
   roulette_name.classList.remove("-hide");
   roulette_container.classList.remove("-hide");
   confeti_canvas.classList.remove("-show");
+  participants_title.classList.remove("-hide");
   spinAngleStart = Math.random() * 10 + 10;
   spinTime = 0;
   spinTimeTotal = Math.random() * 5 + 4 * 5000;
@@ -164,10 +173,12 @@ function stopRotateWheel() {
   var arcd = arc * 180 / Math.PI;
   var index = Math.floor((360 - degrees % 360) / arcd);
   ctx.save();
-  var text = options[index]
+  var text = options[index];
+  console.log("Winner: ",text);
   winner_name.innerText = text;
   message_zone.className += " -show";
   roulette_name.classList.add("-hide");
+  participants_title.classList.add("-hide");
   roulette_container.classList.add("-hide");
   confeti_canvas.classList.add("-show");
   options.splice(index, 1);
