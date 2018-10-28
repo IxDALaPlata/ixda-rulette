@@ -1,6 +1,7 @@
 
 var request = new XMLHttpRequest();
-request.open('GET', '../csv/report.csv', true);
+
+request.open('GET', './public/csv/report.csv', true);
 
 request.onload = function() {
   if (request.status >= 200 && request.status < 400) {
@@ -45,7 +46,7 @@ function parseCSV(data,callback){
     var oldArray = results.data;
 
     for (var i = 1; i < oldArray.length -1; i++) {
-      options.push((oldArray[i][2] + " " + oldArray[i][3]+ "  ")).toString();
+      options.push((oldArray[i][0] + " " + oldArray[i][1]+ "  ")).toString();
     }
   }
   arc = Math.PI / (options.length / 2);

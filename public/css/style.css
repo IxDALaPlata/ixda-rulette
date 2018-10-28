@@ -83,7 +83,7 @@ body{
 	margin-bottom: 30px;
 }
 .with-image{
-		background-image: url(../img/fondo_sorteo_final.jpg);
+		background-image: url(../img/background_4_3.jpg);
 		background-color: #0d1636;
     background-size: 100%;
     background-repeat: no-repeat;
@@ -265,6 +265,6 @@ body{
 }
 @media (min-width: 1200px), (aspect-ratio: 16/9), (aspect-ratio: 16/10) {
 	.with-image{
-	    background-image: url(../img/fondo_sorteo_final_large.jpg);
+	    background-image: url(../img/background_16_9.jpg);
 		}
 }
