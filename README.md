@@ -8,15 +8,9 @@ This app use CSV file with assistants exported from *Eventbrite* (use the API wi
 - [PapaParse] to parse the CSV without problems
 - Using code of [Canvas-Roullete] to draw the custom roullete
 
-## Screen Shots
-![Screenshot roulette spinning](https://raw.githubusercontent.com/IxDALaPlata/redux-rulette/master/screenshots/Roulette.png)
-
-![Screenshot roulette winner](https://raw.githubusercontent.com/IxDALaPlata/redux-rulette/master/screenshots/Winner.png)
-
-
 ### How run (if you aren't dev)
 
-- Download latest version release (link)
+- Download latest version release [link]
 
 - Download or create a CSV file with 'report.csv' name, save it inside public/csv folder 
 - The CSV file need to have the followngs fields and order:
@@ -70,3 +64,4 @@ MIT
    [Canvas-Roullete]: <https://github.com/shafdog/canvas-roulette>
    [installer-here]:<https://chrome.google.com/webstore/detail/web-server-for-chrome/ofhbbkphhbklhfoeikjpcbhemlocgigb/related>
 [tutorial]:<https://www.youtube.com/watch?time_continue=49&v=AK6swHiPtew>
+[link]: <https://github.com/IxDALaPlata/ixda-rulette/archive/v1.0.0.zip>
